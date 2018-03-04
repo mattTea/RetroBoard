@@ -1,0 +1,15 @@
+.flex-container {
+  background-color: #EE62A1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.flex-container > div {
+  background-color: white;
+  font-size: 20px;
+  line-height: 75px;
+  margin: 10px;
+  text-align: center;
+  width: 200px;
+}

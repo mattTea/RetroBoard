@@ -1,7 +1,9 @@
 import React from 'react';
 
 export default class AddColumn extends React.Component {
-  
+  state = {
+    error: undefined
+  };
   handleAddColumn = (e) => {
     e.preventDefault();
     const column = e.target.elements.column.value.trim();
@@ -17,9 +19,9 @@ export default class AddColumn extends React.Component {
   render() {
     return (
       <div>
-        
+        {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.handleAddColumn}>
-          <input type="text" name="column" />
+          <input type="text" name="column" placeholder="column name"/>
           <button className="button">Add Column</button>
         </form>
       </div>

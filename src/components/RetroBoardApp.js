@@ -6,34 +6,38 @@
 // Server side path: How to use databases, saving data to the database, reading data from the database.
 // Example repo at https://github.com/wesharehoodies/simple-trello
 
-
-// Create board - <Board />
-// Create column - <Column />
-// Create card - <Card />
-
 import React from 'react';
 import Header from './Header';
 import Columns from './Columns.js';
 import AddColumn from './AddColumn';
 
-export default class Board extends React.Component {
+export default class RetroBoardApp extends React.Component {
   state = {
     columns: []
   };
 
-  handleDeleteColumns = () => {
-    console.log('All columns deleted');
+  handleRemoveAllColumns = () => {
+    this.setState(() => ({ columns: [] }));
+    console.log('Columns reset');
   };
-  handleDeleteColumn = () => {
+  handleDeleteColumn = (columnToRemove) => {
+    this.setState((prevState) => ({
+      columns: prevState.columns.filter((column) => columnToRemove !== column)
+    }));
     console.log('Selected column deleted');
   };
   handleAddColumn = (column) => {
+    if (!column) {
+      return 'Give the column a name to add it';
+    }
+    
     this.setState((prevState) => ({ columns: prevState.columns.concat(column) }));
+    console.log('column added', this.state.columns.length + 1);
   };
   componentDidMount() {
     try {
       const json = localStorage.getItem('columns');
-      const options = JSON.parse(json);
+      const columns = JSON.parse(json);
 
       if (columns) {
         this.setState(() => ({ columns }));
@@ -56,23 +60,14 @@ export default class Board extends React.Component {
       <div>
         <Header subtitle={subtitle} />
         <AddColumn
-          // columns={this.state.columns}
           handleAddColumn={this.handleAddColumn}
         />
         <Columns
           columns={this.state.columns}
-          handleDeleteColumns={this.handleDeleteColumns}
+          handleRemoveAllColumns={this.handleRemoveAllColumns}
           handleDeleteColumn={this.handleDeleteColumn}
         />
       </div>
     )
   }
 }
-
-
-// <Board /> needs <Columns /> component
-// <Column /> should be like <Option /> in Indecision
-// default number of columns = 0
-// <AddColumn /> adds 1 to this number
-// <Board /> to render the number to start with
-// Then render number of elements (create <div> element in jsx to start with)
