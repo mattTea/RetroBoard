@@ -21,7 +21,7 @@ export default class AddColumn extends React.Component {
       <div>
         {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.handleAddColumn}>
-          <input type="text" name="column" placeholder="column name"/>
+          <input type="text" name="column" placeholder="new column name"/>
           <button className="button">Add Column</button>
         </form>
       </div>

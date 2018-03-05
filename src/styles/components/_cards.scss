@@ -1,0 +1,15 @@
+.flex-container-cards {
+  background-color: $dark-blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+// .flex-container-cards > div {
+//   background-color: white;
+//   font-size: 20px;
+//   line-height: 75px;
+//   margin: 10px;
+//   text-align: center;
+//   width: 200px;
+// }
