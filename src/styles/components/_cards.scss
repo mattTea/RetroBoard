@@ -5,6 +5,12 @@
   justify-content: space-around;
 }
 
+.flex-container-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 // .flex-container-cards > div {
 //   background-color: white;
 //   font-size: 20px;

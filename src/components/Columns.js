@@ -1,17 +1,7 @@
 import React from 'react';
 import Column from './Column';
-// import AddCard from './AddCard';
 
 export default class Columns extends React.Component {
-  // do something like import super() to get the props down from parent too?
-  // state = {
-  //   cards: []
-  // };
-
-  // handleAddCard = (card) => {
-  //   this.setState((prevState) => ({ cards: prevState.cards.concat(card) }));
-  //   console.log('card added', this.state.cards.length + 1);
-  // };
 
   render() {
     return (
