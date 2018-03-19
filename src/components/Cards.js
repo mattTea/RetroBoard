@@ -1,28 +1,36 @@
 import React from 'react';
 import Card from './Card';
 
-export default class Column extends React.Component {
-  // look at course and constructor() plus super(props) to set state/props for the below methods
-  state = {
-    cards: this.props.cards
-  };
+export default class Cards extends React.Component {
+  // state = {
+  //   cards: this.props.cards
+  // };
 
-  componentDidMount() {
-    try {
-      const json = localStorage.getItem('cards');
-      const cards = JSON.parse(json);
+  // componentDidMount() {
+  //   try {
+  //     const json = localStorage.getItem('cards');
+  //     const cards = JSON.parse(json);
 
-      if (cards) {
-        this.setState(() => ({ cards }));
-      }
-    } catch (e) {
-      // do nothing at all
-    }
-  };
+  //     if (cards) {
+  //       this.setState(() => ({ cards }));
+  //       console.log(cards);
+  //     }
+  //   } catch (e) {
+  //     // do nothing at all
+  //   }
+  // };
+  
+  // *Below sets cards to local storage for every instance of a column!*
+  // *Look at setting this on a component that is only rendering an update to a single column*
+  
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.cards.length !== this.state.cards.length) {
-      const json = JSON.stringify(this.state.cards);
+    console.log(this.props.cards.length);
+    if (prevProps.cards.length !== this.props.cards.length) {
+      const json = JSON.stringify(this.props.cards);
+      console.log(json);
       localStorage.setItem('cards', json);
+      console.log(localStorage.getItem('cards'));
+      console.log(this.props.cards.length);
     }
   };
 
