@@ -7,21 +7,25 @@ export default class Column extends React.Component {
     cards: []
   };
 
-  componentDidMount() {
-    try {
-      const json = localStorage.getItem('cards');
-      const cards = JSON.parse(json);
+  // componentDidMount() {
+  //   try {
+  //     const json = localStorage.getItem('cards');
+  //     const cards = JSON.parse(json);
 
-      if (cards) {
-        this.setState(() => ({ cards }));
-        console.log(cards);
-      }
-    } catch (e) {
-      // do nothing at all
-    }
-  };
+  //     if (cards) {
+  //       this.setState(() => ({ cards }));
+  //       console.log(cards);
+  //     }
+  //   } catch (e) {
+  //     // do nothing at all
+  //   }
+  // };
 
   handleAddCard = (card) => {
+    if (!card) {
+      return 'Give the card a name to add it';
+    }
+    
     this.setState((prevState) => ({ cards: prevState.cards.concat(card) }));
     console.log('card added', this.state.cards.length + 1);
   };
@@ -46,13 +50,15 @@ export default class Column extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.props.columnText}</p>
+        <p className="column__text">{this.props.columnText}</p>
         <div className="flex-container-cards">
           <AddCard handleAddCard={this.handleAddCard} />
-          <Cards
-            cards={this.state.cards}
-            handleDeleteCard={this.handleDeleteCard}
-          />
+          <div className="cards">
+            <Cards
+              cards={this.state.cards}
+              handleDeleteCard={this.handleDeleteCard}
+            />
+          </div>
         </div>
         <button className="button" onClick={(e) => {
           this.props.handleDeleteColumn(this.props.columnText);

@@ -6,10 +6,18 @@
 }
 
 .flex-container > div {
-  background-color: white;
-  font-size: 20px;
-  line-height: 75px;
+  background-color: $light-blue;
+  // font-size: 20px;
+  // line-height: 75px;
   margin: 10px;
   text-align: center;
   width: 200px;
+}
+
+.column__text {
+  color: $off-white;
+  font-weight: 500;
+  font-size: 2rem;
+  padding: $s-size;
+  word-break: break-all;
 }

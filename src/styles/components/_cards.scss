@@ -8,14 +8,29 @@
 .flex-container-input {
   display: flex;
   flex-direction: column;
+  font-size: $m-size;
   justify-content: space-around;
+  margin: $s-size;
+  text-align: center;
+
 }
 
-// .flex-container-cards > div {
-//   background-color: white;
-//   font-size: 20px;
-//   line-height: 75px;
-//   margin: 10px;
-//   text-align: center;
-//   width: 200px;
-// }
+.cards {
+  text-align: center;
+  width: auto;
+}
+
+.card {
+  background-color: white;
+  line-height: $m-size;
+  margin: $s-size;
+  text-align: center;
+  width: auto;
+}
+
+.card__text {
+  font-weight: 500;
+  font-size: $m-size;
+  padding: $s-size;
+  word-break: break-all;
+}

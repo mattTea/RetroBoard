@@ -2,9 +2,9 @@
 .button {
   background: $light-blue;
   border: none;
-  border-bottom: .3rem solid darken($light-blue, 10%);
+  // border-bottom: .3rem solid darken($light-blue, 10%);
   color: white;
-  font-size: 16;
+  font-size: $s-size;
   font-weight: 500;
   padding: $s-size;
 }

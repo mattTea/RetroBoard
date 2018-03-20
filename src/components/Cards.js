@@ -23,16 +23,16 @@ export default class Cards extends React.Component {
   // *Below sets cards to local storage for every instance of a column!*
   // *Look at setting this on a component that is only rendering an update to a single column*
   
-  componentDidUpdate(prevProps, prevState) {
-    console.log(this.props.cards.length);
-    if (prevProps.cards.length !== this.props.cards.length) {
-      const json = JSON.stringify(this.props.cards);
-      console.log(json);
-      localStorage.setItem('cards', json);
-      console.log(localStorage.getItem('cards'));
-      console.log(this.props.cards.length);
-    }
-  };
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(this.props.cards.length);
+  //   if (prevProps.cards.length !== this.props.cards.length) {
+  //     const json = JSON.stringify(this.props.cards);
+  //     console.log(json);
+  //     localStorage.setItem('cards', json);
+  //     console.log(localStorage.getItem('cards'));
+  //     console.log(this.props.cards.length);
+  //   }
+  // };
 
   render() {
     return (
