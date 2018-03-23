@@ -1,12 +1,20 @@
 import React from 'react';
 
-const Card = (props) => (
-  <div className="card">
-    <p className="card__text">{props.cardText}</p>
-    <button className="button" onClick={(e) => {
-      props.handleDeleteCard(props.cardText);
-    }}>bin card</button>
-  </div>
-);
+export default class Card extends React.Component {
 
-export default Card;
+  handleDrag = (ev) => {
+    ev.dataTransfer.setData("text", ev.target.id);
+    console.log(ev.target.id, 'Drag started');
+  };
+
+  render() {
+    return (
+      <div id="cardToDrag" className="card" draggable="true" onDragStart={this.handleDrag}>
+        <p className="card__text">{this.props.cardText}</p>
+        <button className="button" onClick={(e) => {
+          this.props.handleDeleteCard(this.props.cardText);
+        }}>bin card</button>
+      </div>    
+    )
+  }
+}

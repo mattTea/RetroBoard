@@ -34,9 +34,21 @@ export default class Cards extends React.Component {
   //   }
   // };
 
+  allowDrop = (ev) => {
+    ev.preventDefault();
+    console.log('drop allowed');
+  };
+
+  handleDrop = (ev) => {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+    console.log('drop handled');
+  };
+
   render() {
     return (
-      <div>
+      <div onDragOver={this.allowDrop} onDrop={this.handleDrop}>
         {
           this.props.cards.map((card, index) => (
             <Card
@@ -50,20 +62,4 @@ export default class Cards extends React.Component {
       </div>
     )
   }
-
-// const Cards = (props) => (
-//   <div>
-//     {
-//       props.cards.map((card, index) => (
-//         <Card
-//           key={index}
-//           cardText={card}
-//           count={index + 1}
-//           handleDeleteCard={props.handleDeleteCard}
-//         />
-//       ))
-//     }
-//   </div>
-// );
 }
-// export default Cards
