@@ -34,21 +34,9 @@ export default class Cards extends React.Component {
   //   }
   // };
 
-  allowDrop = (ev) => {
-    ev.preventDefault();
-    console.log('drop allowed');
-  };
-
-  handleDrop = (ev) => {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-    console.log('drop handled');
-  };
-
   render() {
     return (
-      <div onDragOver={this.allowDrop} onDrop={this.handleDrop}>
+      <div>
         {
           this.props.cards.map((card, index) => (
             <Card

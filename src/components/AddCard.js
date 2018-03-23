@@ -16,6 +16,7 @@ export default class AddCard extends React.Component {
     }
     
   };
+
   render() {
     return (
       <div>
