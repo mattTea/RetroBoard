@@ -9,7 +9,7 @@ export default class Card extends React.Component {
 
   render() {
     return (
-      <div id="cardToDrag" className="card" draggable="true" onDragStart={this.handleDrag}>
+      <div id={this.props.cardText} className="card" draggable="true" onDragStart={this.handleDrag}>
         <p className="card__text">{this.props.cardText}</p>
         <button className="button" onClick={(e) => {
           this.props.handleDeleteCard(this.props.cardText);
