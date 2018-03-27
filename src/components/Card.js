@@ -6,7 +6,7 @@ export default class Card extends React.Component {
     ev.dataTransfer.setData("text", ev.target.id);
     console.log(ev.target.id, 'Drag started');
   };
-
+  
   render() {
     return (
       <div id={this.props.cardText} className="card" draggable="true" onDragStart={this.handleDrag}>

@@ -24,11 +24,14 @@ export default class Column extends React.Component {
   };
 
   allowDrop = (ev) => {
-    ev.preventDefault();
-    console.log('drop allowed');
+    console.log('target.id: ' + ev.target.id);
+    if (ev.target.id == "drop-allowed") {
+      ev.preventDefault();
+      console.log('drop allowed');
+    }    
   };
 
-  handleDrop = (ev) => {
+  handleDrop = (ev) => {    
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
@@ -41,7 +44,7 @@ export default class Column extends React.Component {
         <p className="column__text">{this.props.columnText}</p>
         <div className="flex-container-cards">
           <AddCard handleAddCard={this.handleAddCard} />
-          <div id="target" className="cards" onDragOver={this.allowDrop} onDrop={this.handleDrop}>
+          <div id="drop-allowed" className="cards" onDragOver={this.allowDrop} onDrop={this.handleDrop}>
             <Cards
               cards={this.state.cards}
               handleDeleteCard={this.handleDeleteCard}
@@ -56,4 +59,7 @@ export default class Column extends React.Component {
   }
 }
 
-// *Prevent drop on card - looks weird and breaks 'bin card'
+// Next TODO - fix 'bin card' 
+// error occurring because the state.cards.length is only seeing number of cards in a single column
+// (watch line 16)
+// poss fix is to move cards state to the Columns component, and manage it there (across all columns)
