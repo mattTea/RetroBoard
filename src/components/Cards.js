@@ -1,13 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Card from './Card';
 
-export default class Cards extends React.Component {
+class Cards extends React.Component {
 
+  // CARDS ARRAY NOT REACHING console.log() IN RENDER BELOW EITHER
   render() {
     return (
       <div>
+        {console.log('cards array: ' + this.props.cards)}
         {
-          this.props.cards.map((card, index) => (
+          this.props.cards.map((card, index) => (  
             <Card
               key={index}
               cardText={card}
@@ -20,3 +23,11 @@ export default class Cards extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  };
+};
+
+export default connect(mapStateToProps)(Cards);

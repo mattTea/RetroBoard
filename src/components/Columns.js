@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Column from './Column';
 
-export default class Columns extends React.Component {
+// export default class Columns extends React.Component {
+class Columns extends React.Component {
 
   render() {
     return (
@@ -31,3 +33,11 @@ export default class Columns extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  };
+};
+
+export default connect(mapStateToProps)(Columns);
