@@ -9,9 +9,11 @@ import './styles/styles.scss';
 
 const store = configureStore();
 
-// store.dispatch(addCard({ cardText: 'Card One' }));
+store.subscribe(() => {
+  console.log(store.getState());
+});
 
-console.log(store.getState());
+// console.log(store.getState());
 
 const jsx = (
   <Provider store={store}>

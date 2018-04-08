@@ -1,19 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addCard } from './../actions/cards';
 import AddCard from './AddCard';
 import Cards from './Cards';
+import configureStore from './../store/configureStore';
 
-export default class Column extends React.Component {
-  state = {
-    cards: []
-  };
+const store = configureStore();
+
+class Column extends React.Component {
+  // state = {
+  //   cards: []
+  // };
 
   handleAddCard = (card) => {
-    if (!card) {
-      return 'Give the card a name to add it';
-    }
+    // if (!card) {
+    //   return 'Give the card a name to add it';
+    // }
     
-    this.setState((prevState) => ({ cards: prevState.cards.concat(card) }));
-    console.log('card added', this.state.cards.length + 1);
+    // this.setState((prevState) => ({ cards: prevState.cards.concat(card) }));
+    // store.dispatch(addCard({ cardText: card }));
+    // console.log('card added', this.props.cards.length);
   };
   
   handleDeleteCard = (cardToRemove) => {
@@ -43,10 +49,10 @@ export default class Column extends React.Component {
       <div>
         <p className="column__text">{this.props.columnText}</p>
         <div className="flex-container-cards">
-          <AddCard handleAddCard={this.handleAddCard} />
+          <AddCard onAddCard={this.handleAddCard} />
           <div id="drop-allowed" className="cards" onDragOver={this.allowDrop} onDrop={this.handleDrop}>
             <Cards
-              cards={this.state.cards}
+              cards={this.props.cards}
               handleDeleteCard={this.handleDeleteCard}
             />
           </div>
@@ -58,6 +64,14 @@ export default class Column extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  };
+};
+
+export default connect(mapStateToProps)(Column);
 
 // Next TODO - fix 'bin card' 
 // error occurring because the state.cards.length is only seeing number of cards in a single column

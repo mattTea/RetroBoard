@@ -8,14 +8,14 @@ class Cards extends React.Component {
   render() {
     return (
       <div>
-        {console.log('cards array: ' + this.props.cards)}
+        {console.log('cards array: ' + this.props.cards.length)}
         {
-          this.props.cards.map((card, index) => (  
+          this.props.cards.map((card) => (  
             <Card
-              key={index}
-              cardText={card}
-              count={index + 1}
-              handleDeleteCard={this.props.handleDeleteCard}
+              key={card.id}
+              cardText={card.cardText}
+              // count={index + 1}
+              handleDeleteCard={card.handleDeleteCard}
             />
           ))
         }

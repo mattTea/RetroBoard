@@ -11,7 +11,7 @@ export default (state = cardsReducerDefaultState, action) => {
           action.card
         ];
       } else {
-        console.log('Give the card a name to add it');
+        alert('Give the card a name to add it');
       }
     case 'REMOVE_CARD':
       return state.filter(({ id }) => id !== action.id);
