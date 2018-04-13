@@ -53,6 +53,7 @@ class Column extends React.Component {
           <div id="drop-allowed" className="cards" onDragOver={this.allowDrop} onDrop={this.handleDrop}>
             <Cards
               cards={this.props.cards}
+              columnId={this.props.columnId}
               handleDeleteCard={this.handleDeleteCard}
             />
           </div>

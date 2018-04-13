@@ -14,6 +14,8 @@ class Columns extends React.Component {
           {
             this.props.columns.map((column, index) => (
               <Column
+                columns={this.props.columns}
+                columnId={index}
                 key={index}
                 columnText={column}
                 count={index + 1}
